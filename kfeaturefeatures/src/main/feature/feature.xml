@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="${project.artifactId}-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.6.0">
+
+
+    <feature name='kfeatures' description='${project.name}' version='${project.version}'>
+        <details>"KFeature Features"</details>
+
+        <bundle>mvn:com.example.kfeatures/kfeatureworker/0.0.1</bundle>
+
+    </feature>
+
+</features>

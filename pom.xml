@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+    <artifactId>kfeatures</artifactId>
+    <version>0.0.1</version>
+
+    <name>KFeatures</name>
+
+    <modules>
+        <module>kfeaturesmanager</module>
+        <module>kfeatureworker</module>
+        <module>kfeaturefeatures</module>
+    </modules>
+
+    <packaging>pom</packaging>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <karaf.version>4.3.0</karaf.version>
+        <osgi.version>7.0.0</osgi.version>
+
+        <osgi.bundle.version>${project.version}</osgi.bundle.version>
+
+        <javax.servlet.version>3.1.0</javax.servlet.version>
+
+        <slf4j.version>1.7.26</slf4j.version>
+
+        <maven.compiler.release>8</maven.compiler.release>
+        <javax.xml.bind.version>2.2.7</javax.xml.bind.version>
+        <javax.activation.version>1.2.0</javax.activation.version>
+
+        <karaf-maven-plugin.version>${karaf.version}</karaf-maven-plugin.version>
+        <maven-bundle-plugin.version>4.2.1</maven-bundle-plugin.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.osgi</groupId>
+                <artifactId>osgi.core</artifactId>
+                <version>7.0.0</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.osgi</groupId>
+                <artifactId>osgi.cmpn</artifactId>
+                <version>7.0.0</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-simple</artifactId>
+                <version>1.7.26</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>osgi.core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>osgi.cmpn</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+        </dependency>
+    </dependencies>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>apache.snapshots</id>
+            <url>https://repository.apache.org/snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+
+</project>

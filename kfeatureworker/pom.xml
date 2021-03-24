@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.example</groupId>
+        <artifactId>kfeatures</artifactId>
+        <version>0.0.1</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example.kfeatures</groupId>
+    <artifactId>kfeatureworker</artifactId>
+    <packaging>bundle</packaging>
+
+    <name>KFeatures :: KFeatureWorker</name>
+
+    <description>
+        kfeatureworker OSGi bundle project.
+    </description>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.karaf.features</groupId>
+            <artifactId>org.apache.karaf.features.core</artifactId>
+            <version>4.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.example.kfeatures</groupId>
+            <artifactId>kfeaturemanager</artifactId>
+            <version>0.0.1</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>${maven-bundle-plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Version>${project.version}</Bundle-Version>
+                        <Export-Package>
+                            com.example.kfeatures.kfeatureworker.api*;
+                        </Export-Package>
+                        <Private-Package>
+                            com.example.kfeatures.kfeatureworker.provider*;
+                        </Private-Package>
+
+                        <Import-Package>
+                            *
+                        </Import-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <maxmem>256M</maxmem>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>
