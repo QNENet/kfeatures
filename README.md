@@ -22,8 +22,15 @@ Because the base Karaf install does not have Declarative Services (scr) installe
 
 We need a lower level approach.
 
-##To Run this Example
+## To Run this Example
 
+We need to list the KFeatureManager bundle in the karaf/etc/startup.properties file. 
+
+![](assets/images/kfeatures-2.png)
+
+Next add the KFeatureManager bundle to the Karaf systems directory so that Karaf can find the bundle when it starts.
+
+![](assets/images/kfeatures-1.png)
 
 1. Build the project with maven
 2.  
