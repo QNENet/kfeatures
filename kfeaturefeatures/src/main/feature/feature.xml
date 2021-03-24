@@ -4,6 +4,8 @@
 
     <feature name='kfeatures' description='${project.name}' version='${project.version}'>
         <details>"KFeature Features"</details>
+        <feature>scr</feature>
+        <feature>http</feature>
 
         <bundle>mvn:com.example.kfeatures/kfeatureworker/0.0.1</bundle>
 
