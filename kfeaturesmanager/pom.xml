@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.example</groupId>
         <artifactId>kfeatures</artifactId>
-        <version>0.0.1</version>
+        <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -23,9 +23,14 @@
 
     <dependencies>
         <dependency>
+          <groupId>org.osgi</groupId>
+          <artifactId>osgi.core</artifactId>
+          <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>org.apache.karaf.features</groupId>
             <artifactId>org.apache.karaf.features.core</artifactId>
-            <version>4.3.0</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -34,37 +39,25 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <version>${maven-bundle-plugin.version}</version>
                 <extensions>true</extensions>
+                <inherited>true</inherited>
                 <configuration>
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Version>${project.version}</Bundle-Version>
                         <Bundle-Activator>com.example.kfeatures.kfeaturemanager.provider.KFeatureManagerImpl</Bundle-Activator>
                         <Export-Package>
-                            com.example.kfeatures.kfeaturemanager.api*;
+                            com.example.kfeatures.kfeaturemanager.api
                         </Export-Package>
                         <Private-Package>
-                            com.example.kfeatures.kfeaturemanager.provider*;
+                            com.example.kfeatures.kfeaturemanager.provider
                         </Private-Package>
-
                         <Import-Package>
                             *
                         </Import-Package>
                     </instructions>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <maxmem>256M</maxmem>
-                </configuration>
-            </plugin>
-
         </plugins>
     </build>
 
