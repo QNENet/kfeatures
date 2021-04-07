@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.example</groupId>
         <artifactId>kfeatures</artifactId>
-        <version>0.0.1</version>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -18,21 +18,12 @@
     <description>kfeaturefeatures details</description>
 
     <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.karaf.tooling</groupId>
-                    <artifactId>karaf-maven-plugin</artifactId>
-                    <version>${karaf-maven-plugin.version}</version>
-                    <extensions>true</extensions>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-
         <plugins>
             <plugin>
                 <groupId>org.apache.karaf.tooling</groupId>
                 <artifactId>karaf-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <inherited>true</inherited>
                 <configuration>
                     <startLevel>50</startLevel>
                     <aggregateFeatures>true</aggregateFeatures>
