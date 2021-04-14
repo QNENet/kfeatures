@@ -2,6 +2,8 @@ package com.example.kfeatures.kfeaturemanager.provider;
 
 import com.example.kfeatures.kfeaturemanager.api.KFeatureManager;
 import java.util.Hashtable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import org.apache.karaf.features.FeaturesService;
 import org.osgi.framework.*;
 import org.osgi.util.tracker.ServiceTracker;
@@ -30,19 +32,26 @@ public class KFeatureManagerImpl implements KFeatureManager, BundleActivator {
     }
 
     @Override
-    public void installFeature(String featureName) throws Exception {
-        BundleContext context = FrameworkUtil.getBundle(this.getClass()).getBundleContext();
-        ServiceReference<FeaturesService> ref = context.getServiceReference(FeaturesService.class);
-        if (ref != null) {
-            FeaturesService featuresService = context.getService(ref);
-            if (featuresService != null) {
-                featuresService.installFeature(featureName);
-                context.ungetService(ref);
+    public void installFeature(String featureName) {
+        ExecutorService executor = Executors.newFixedThreadPool(5);
+        executor.submit(() -> {
+            BundleContext context = FrameworkUtil.getBundle(this.getClass()).getBundleContext();
+            ServiceReference<FeaturesService> ref = context.getServiceReference(FeaturesService.class);
+            if (ref != null) {
+                FeaturesService featuresService = context.getService(ref);
+                if (featuresService != null) {
+                    try {
+                        featuresService.installFeature(featureName);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    context.ungetService(ref);
+                } else {
+                    System.out.println("No features service found");
+                }
             } else {
-                System.out.println("No features service found");
+                System.out.println("No features service ref found");
             }
-        } else {
-            System.out.println("No features service ref found");
-        }
+        });
     }
 }
